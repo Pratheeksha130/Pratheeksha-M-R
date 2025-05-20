@@ -1,36 +1,40 @@
-# Problem-1: Calculator using Class
-# Language: Python
+# Problem-1: Simple Calculator using Class
 # Author: Pratheeksha M R
 
 class Calculator:
-    def __init__(self, a: float, b: float):
-        self.a = a
-        self.b = b
+    def add(self, a, b):
+        return a + b
 
-    def calculate(self, operation: str) -> float:
-        if operation.lower() == "add":
-            return self.a + self.b
-        elif operation.lower() == "subtract":
-            return self.a - self.b
-        elif operation.lower() == "multiply":
-            return self.a * self.b
-        elif operation.lower() == "divide":
-            if self.b != 0:
-                return self.a / self.b
-            else:
-                return "Error: Division by zero"
+    def subtract(self, a, b):
+        return a - b
+
+    def multiply(self, a, b):
+        return a * b
+
+    def divide(self, a, b):
+        if b != 0:
+            return a / b
         else:
-            return "Invalid operation"
+            return "Cannot divide by zero"
 
+# Get user input
+a = float(input("Enter first number (a): "))
+b = float(input("Enter second number (b): "))
+operation = input("Enter operation (add, subtract, multiply, divide): ")
 
-if __name__ == "__main__":
-    try:
-        a = float(input("Enter first number (a): "))
-        b = float(input("Enter second number (b): "))
-        operation = input("Enter operation (add, subtract, multiply, divide): ")
+# Create Calculator object
+calc = Calculator()
 
-        calc = Calculator(a, b)
-        result = calc.calculate(operation)
-        print("Result:", result)
-    except ValueError:
-        print("Please enter valid numeric inputs.")
+# Perform operation
+if operation == "add":
+    result = calc.add(a, b)
+elif operation == "subtract":
+    result = calc.subtract(a, b)
+elif operation == "multiply":
+    result = calc.multiply(a, b)
+elif operation == "divide":
+    result = calc.divide(a, b)
+else:
+    result = "Invalid operation"
+
+print("Result:", result)
